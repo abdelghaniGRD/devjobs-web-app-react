@@ -1,38 +1,883 @@
-.App {
-  text-align: center;
+body,
+html {
+  overflow-x: hidden;
+}
+body {
+  background-color: var(--primary-Very-Dark-Blue);
+  /* color: var(--p-color); */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root > div > header > div.main > div.search > div.col1,
+#root > div > header > div.main > div.search > div.col2,
+#root > div > header > div.main > div.search > div.col3 {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root {
+  --primary-violet: #5964e0;
+  --primary-light-violet: #939bf4;
+
+  --primary-Very-Dark-Blue: #f4f6f8;
+  --primary-Midnight: #ffffff;
+
+  --p-color: black;
+
+  --sec-gray: #9daec2;
+  --sec-dark-grey: #6e8098;
+
+  --check-background: #f4f6f8;
+}
+body.dark-mode {
+  /* --primary-Very-Dark-Blue: #19202d; */
+  --primary-Very-Dark-Blue: #121721;
+  --primary-Midnight: #19202d;
+  --p-color: white;
+
+  --check-background: #6e8090;
+}
+input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
+}
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+body.dark-mode .header .content .light {
+  display: none;
+}
+body.dark-mode .header .content .night {
+  display: block;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  position: relative;
+}
+.App .App-header .header {
+  width: 100%;
+  height: 161px;
+  background-image: url("assets/mobile/bg-pattern-header.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0px 24px 0px 24px;
+  position: relative;
+}
+.header .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.App .search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 327px;
+  height: 80px;
+  background-color: var(--primary-Midnight);
+  position: absolute;
+  top: 119px;
+  padding-left: 24px;
+  padding-right: 16px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.header a {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  padding-top: 32px;
+}
+.App-header .main {
+  width: 327px;
+  border-top: 1px solid transparent;
+  margin: 72px auto 0px;
+  color: var(--p-color);
+}
+.App-header .apply {
+  margin: 0 auto;
+  background-color: var(--primary-Midnight);
+  padding: 25px;
+}
+.App-header .card-details {
+  width: 327px;
+  height: 205px;
+  background-color: var(--primary-Midnight);
+  margin: -19px auto;
+  position: relative;
+  border-radius: 6px;
+}
+.App-header .job-description {
+  width: 327px;
+
+  background-color: var(--primary-Midnight);
+  margin: 43px auto;
+  border-radius: 6px;
+  padding: 0px 25px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+.App-header .job-description .desc-text {
+  line-height: 26px;
+  color: var(--sec-dark-grey);
+  margin-top: 32px;
+  margin-bottom: 66px;
+}
+/* .App-header div:nth-of-type(4) {
+  width: 375px;
+  height: 96px;
+  background-color: var(--primary-Midnight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.App-header .job-description .requirments p {
+  line-height: 26px;
+  color: var(--sec-dark-grey);
+  margin-bottom: 32px;
+  margin-top: 28px;
+}
+.App-header .job-description .requirments h2 {
+  color: var(--p-color);
+  margin-bottom: 28px;
+}
+.App-header .job-description .requirments ul li {
+  line-height: 26px;
+  margin-left: 36px;
+  color: var(--sec-dark-grey);
+}
+.App-header .job-description .requirments ul li::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 5px;
+  height: 5px;
+  background-color: var(--primary-violet);
+  border-radius: 50%;
+  margin-top: 10px;
+}
+.App-header .job-description .role {
+  padding-bottom: 30px;
+}
+.App-header .job-description .role p {
+  color: var(--sec-dark-grey);
+  line-height: 26px;
+  margin-bottom: 32px;
+}
+.App-header .job-description .role h2 {
+  margin-top: 40px;
+  margin-bottom: 23px;
+  color: var(--p-color);
+}
+.App-header .job-description .role ul li {
+  line-height: 26px;
+  margin-left: 36px;
+  color: var(--sec-dark-grey);
+}
+.App-header .job-description .role ul li::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 5px;
+  height: 5px;
+  background-color: var(--primary-violet);
+  border-radius: 50%;
+  margin-top: 10px;
+}
+.apply-button {
+  width: 279px;
+  height: 48px;
+  margin: 0px auto;
+  display: block;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  background-color: var(--primary-violet);
+  font-weight: 600;
+}
+.App-header .job-description .description-header p:nth-of-type(1),
+.App-header .job-description .description-header p:nth-of-type(2) {
+  display: inline;
+  color: var(--sec-dark-grey);
+}
+.App-header .job-description .description-header {
+  padding: 40px 0px 50px 0px;
+}
+.App-header .job-description .description-header p:nth-of-type(3) {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--p-color);
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+.App-header .job-description .description-header p:nth-of-type(4) {
+  color: var(--primary-violet);
+  font-weight: bold;
+}
+.App-header .job-description .description-header span {
+  margin: 0px 12px;
+  width: 5px;
+  height: 5px;
+  background-color: var(--sec-gray);
+  display: inline-block;
+  border-radius: 50%;
+}
+.App-header .card-details .company-info {
   display: flex;
   flex-direction: column;
+  padding-top: 49px;
+  align-items: center;
+}
+.App-header .card-details .company-info button {
+  background-color: #eff0fc;
+  padding: 16px 21px;
+  border: none;
+  border-radius: 5px;
+  color: var(--primary-violet);
+  font-weight: bolder;
+}
+.App-header .card-details .banner .logo {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 14px;
+  position: absolute;
+  top: -25px;
+  transform: translateX(50%);
+  right: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  font-weight: bold;
+}
+.App-header .card-details .company-info p:first-of-type {
+  color: var(--p-color);
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+.App-header .card-details .company-info p:nth-of-type(2) {
+  color: var(--sec-dark-grey);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.App-header .main .load-more {
+  width: 141px;
+  height: 48px;
+  color: white;
+  font-weight: bold;
+  background-color: var(--primary-violet);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto 20px;
+}
+.header .content .night {
+  display: none;
+}
+.App-header .main .card {
+  width: 327px;
+  height: 228px;
+  background-color: var(--primary-Midnight);
+  border-radius: 6px;
+  margin-top: 25px;
+  border-top: 1px solid transparent;
+  position: relative;
+  margin-bottom: 49px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header .main .card .info {
+  width: 286px;
+  height: 147px;
+  margin: 49px 9px 32px 32px;
+}
+.App-header .main .card .info .logo {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -25px;
+}
+.App-header .main .card .info .position {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 13px;
+}
+.App-header .main .card .info .company-name {
+  font-size: 16px;
+  margin-top: 17px;
+  color: var(--sec-gray);
+}
+.App-header .main .card .info .location {
+  font-size: 14px;
+  margin-top: 44px;
+  color: #5964e0;
+  font-weight: bold;
+}
+.App-header .main .card .info .sec1 {
+  display: flex;
+  gap: 8px;
+  color: var(--sec-dark-grey);
+  align-items: baseline;
+}
+.App-header .main .card .info .sec1 .circle {
+  width: 4px;
+  height: 4px;
+  background-color: var(--sec-dark-grey);
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App-header .search .icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.App-header .popup {
+  background-color: var(--primary-Midnight);
+  color: var(--p-color);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  transform: translate(-50%, -50%);
+  width: 327px;
+  height: 217px;
+  border-radius: 6px;
+}
+.App-header .overlayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  z-index: 10;
+  /* display: none; Initially hidden */
+}
+.App-header .popup .filtering-card {
+  /* padding: 24px; */
+}
+.App-header .popup .filtering-card .by-location {
+  display: flex;
+  gap: 16px;
+
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--primary-light-violet);
+}
+.App-header .popup .filtering-card .by-full-time {
+  display: flex;
+  padding: 24px;
+  gap: 16px;
+}
+.popup .filtering-card .by-full-time p {
+  font-weight: bold;
+}
+.popup .filtering-card .search-btn {
+  width: 279px;
+  height: 48px;
+  border: none;
+  margin: 0px 24px 24px 24px;
+  color: white;
+  background-color: var(--primary-violet);
+  font-weight: bold;
+  border-radius: 5px;
+}
+.popup .filtering-card .search-btn:hover {
+  background-color: var(--primary-light-violet);
+}
+.App-header .popup .filtering-card .by-full-time .check {
+  width: 24px;
+  height: 24px;
+  background-color: var(--check-background);
+  border-radius: 3px;
+}
+.App-header .search p {
+  color: var(--sec-gray);
+}
+.App-header .search .search-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary-violet);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-left: 24px;
+}
+.light-mode {
+  width: 112px;
+  height: 24px;
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.light-mode:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+a {
+  background-color: var(--primary-violet);
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
   }
-  to {
-    transform: rotate(360deg);
+  .App-header {
+    width: 768px;
+    margin: 0 auto;
+  }
+  .App-header .apply {
+    display: block;
+    position: relative;
+  }
+  .App-header .main {
+    width: 768px;
+  }
+  .main .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 11px;
+  }
+  .App-header .job-description {
+    width: 689px;
+  }
+  .App-header .main .card {
+    width: 339px;
+  }
+  .App-header .apply h2 {
+    margin-bottom: 12px;
+    color: var(--p-color);
+  }
+  .App-header .apply p {
+    color: var(--sec-gray);
+  }
+  /* .App-header div:nth-of-type(4) {
+    display: none;
+  } */
+  .App .search {
+    padding: 0px;
+    width: 689px;
+    display: flex;
+    justify-content: normal;
+  }
+  .App-header .popup {
+    transform: none;
+    width: auto;
+    height: auto;
+    position: unset;
+    top: unset;
+    left: unset;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+  }
+  .App .search .icons {
+    display: none;
+  }
+  .App-header .popup .filtering-card .by-location,
+  .App-header .popup .filtering-card .by-full-time {
+    display: none;
+  }
+  .App .App-header .header {
+    background-image: url("./assets/tablet/bg-pattern-header.svg");
+    /* padding: 0px 165px 0px 165px; */
+  }
+  #root > div > header > div.main > div.search > p {
+    display: none;
+  }
+  #root > div > header > div.main > div.search > div.col1,
+  #root > div > header > div.main > div.search > div.col2 {
+    padding-left: 24px;
+    column-gap: 16px;
+  }
+  #root > div > header > div.main > div.search > div.col1,
+  #root > div > header > div.main > div.search > div.col2,
+  #root > div > header > div.main > div.search > div.col3 {
+    display: block;
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  #root > div > header > div.main > div.search > div.col1 {
+    width: 222px;
+  }
+  #root > div > header > div.main > div.search > div.col2 {
+    width: 213px;
+  }
+  #root > div > header > div.main > div.search > div.col3 {
+    width: 252px;
+  }
+  #root > div > header > div.main > div.search > div.col3 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  #root > div > header > div.main > div.search > div.col3,
+  #root > div > header > div.main > div.search > div.col2 {
+    border-left: 1px solid #ebebeb;
+  }
+
+  #root > div > header > div.main > div.search > div.col3 span {
+    width: 24px;
+    height: 24px;
+    background-color: var(--check-background);
+    border-radius: 5px;
+    margin-right: 16px;
+  }
+  #root > div > header > div.main > div.search > div.col3 button {
+    width: 80px;
+    height: 48px;
+    background-color: var(--primary-violet);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 6px;
+    margin-left: 16px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+  }
+  #root > div > header > div.main > div.search > div.col3 > p {
+    font-weight: bold;
+    color: var(--p-color);
+  }
+
+  #root > div > header > div.main > div.search > div.col1 > svg > path {
+    fill: var(--primary-violet);
+  }
+
+  /* CardDetails COMPONENT STYLES */
+
+  .App-header .card-details {
+    width: 689px;
+    height: 140px;
+  }
+  .App-header .job-description {
+    position: relative;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .App-header .job-description .desc-text {
+    margin-top: unset;
+    margin-bottom: 40px;
+  }
+  .App-header .card-details .banner {
+    display: flex;
+    column-gap: 40px;
+    position: relative;
+  }
+  .App-header .card-details .company-info {
+    display: unset;
+    flex-direction: unset;
+    align-items: center;
+    padding-top: unset;
+    /* position: relative; */
+  }
+  .App-header .job-description button {
+    display: inline-block;
+    position: absolute;
+    top: 68px;
+    right: 48px;
+    width: 141px;
+    height: 48px;
+  }
+  .App-header .job-description .description-header {
+    display: inline-block;
+    padding-top: 48px;
+  }
+  .App-header .card-details .company-info button {
+    display: inline;
+    margin-right: 40px;
+    position: absolute;
+    width: 147px;
+    height: 48px;
+    padding: unset;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+  .App-header .card-details .company-info p:nth-of-type(2) {
+    display: inline;
+  }
+  .App-header .card-details .company-info p:first-of-type {
+    width: fit-content;
+    margin-top: 42px;
+    margin-bottom: 0px;
+  }
+  .App-header .card-details .banner .logo {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: unset;
+    transform: unset;
+    padding: unset;
+    border-radius: unset;
+  }
+  header > div.apply > button {
+    position: absolute;
+    right: 40px;
+    top: 25px;
+    width: 141px;
+    height: 48px;
+  }
+}
+
+/* Laptop devices (1025px and up) */
+@media (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+  .App-header {
+    margin: 0 auto;
+  }
+  .App-header .apply {
+    display: block;
+    position: relative;
+  }
+  .App-header .main {
+    width: 1110px;
+    margin-top: 144px;
+  }
+  .main .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .App-header .job-description {
+    width: 730px;
+    margin: 52px auto;
+  }
+  .App-header .main .card {
+    width: 350px;
+    margin-bottom: 65px;
+    cursor: pointer;
+  }
+  .App-header .main .card .info .position:hover {
+    color: var(--sec-dark-grey);
+  }
+  .App-header .search .col1 p::after {
+    content: ", companies, expertise ...";
+  }
+  .App-header .apply h2 {
+    margin-bottom: 12px;
+    color: var(--p-color);
+  }
+  .App-header .apply p {
+    color: var(--sec-gray);
+  }
+  /* .App-header div:nth-of-type(4) {
+    display: none;
+  } */
+  .App .search {
+    padding: 0px;
+    width: 1110px;
+    display: flex;
+    justify-content: normal;
+    top: 127px;
+  }
+  .App-header .popup {
+    transform: none;
+    width: auto;
+    height: auto;
+    position: unset;
+    top: unset;
+    left: unset;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+  }
+  .App .search .icons {
+    display: none;
+  }
+  .App-header .popup .filtering-card .by-location,
+  .App-header .popup .filtering-card .by-full-time {
+    display: none;
+  }
+  .App .App-header .header {
+    background-image: url("./assets/desktop//bg-pattern-header.svg");
+    padding: 0px 154px 0px 154px;
+  }
+  #root > div > header > div.main > div.search > p {
+    display: none;
+  }
+  #root > div > header > div.main > div.search > div.col1,
+  #root > div > header > div.main > div.search > div.col2 {
+    padding-left: 32px;
+    column-gap: 16px;
+  }
+  #root > div > header > div.main > div.search > div.col1,
+  #root > div > header > div.main > div.search > div.col2,
+  #root > div > header > div.main > div.search > div.col3 {
+    display: block;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  #root > div > header > div.main > div.search > div.col1 {
+    width: 463px;
+  }
+  #root > div > header > div.main > div.search > div.col2 {
+    width: 300px;
+  }
+  #root > div > header > div.main > div.search > div.col3 {
+    width: 345px;
+  }
+  #root > div > header > div.main > div.search > div.col3 {
+    padding-left: 32px;
+    padding-right: 16px;
+    justify-content: space-between;
+  }
+  #root > div > header > div.main > div.search > div.col3,
+  #root > div > header > div.main > div.search > div.col2 {
+    border-left: 1px solid #ebebeb;
+  }
+
+  #root > div > header > div.main > div.search > div.col3 span {
+    width: 24px;
+    height: 24px;
+    background-color: var(--check-background);
+    border-radius: 5px;
+    margin-right: 16px;
+  }
+  #root > div > header > div.main > div.search > div.col3 button {
+    padding: 16px 35px;
+    background-color: var(--primary-violet);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 6px;
+    margin-left: 26px;
+    cursor: pointer;
+  }
+  #root > div > header > div.main > div.search > div.col3 button:hover {
+    background-color: #939bf4;
+  }
+  #root > div > header > div.main > div.search > div.col1 > p:hover,
+  #root > div > header > div.main > div.search > div.col2 > p:hover {
+    color: black;
+  }
+  .App-header .main .load-more:hover {
+    background-color: #939bf4;
+    cursor: pointer;
+  }
+  #root > div > header > div.main > div.search > div.col3 > p {
+    font-weight: bold;
+    color: var(--p-color);
+  }
+
+  #root > div > header > div.main > div.search > div.col1 > svg > path {
+    fill: var(--primary-violet);
+  }
+
+  /* CardDetails COMPONENT STYLES */
+
+  .App-header .card-details {
+    width: 730px;
+    height: 140px;
+    margin: -26 auto;
+  }
+  .App-header .job-description {
+    position: relative;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .App-header .job-description .desc-text {
+    margin-top: unset;
+    margin-bottom: 40px;
+  }
+  .App-header .card-details .banner {
+    display: flex;
+    column-gap: 40px;
+    position: relative;
+  }
+  .App-header .card-details .company-info {
+    display: unset;
+    flex-direction: unset;
+    align-items: center;
+    padding-top: unset;
+    /* position: relative; */
+  }
+  .App-header .job-description button {
+    display: inline-block;
+    position: absolute;
+    top: 68px;
+    right: 48px;
+    width: 141px;
+    height: 48px;
+  }
+  .App-header .job-description .description-header {
+    display: inline-block;
+    padding-top: 48px;
+  }
+  .App-header .card-details .company-info button {
+    display: inline;
+    margin-right: 40px;
+    position: absolute;
+    width: 147px;
+    height: 48px;
+    padding: unset;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+  }
+  .App-header .card-details .company-info p:nth-of-type(2) {
+    display: inline;
+  }
+  .App-header .card-details .company-info p:first-of-type {
+    width: fit-content;
+    margin-top: 42px;
+    margin-bottom: 0px;
+  }
+  .App-header .card-details .banner .logo {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: unset;
+    transform: unset;
+    padding: unset;
+    border-radius: unset;
+  }
+  header > div.apply > button {
+    position: absolute;
+    right: 40px;
+    top: 25px;
+    width: 141px;
+    height: 48px;
   }
 }
