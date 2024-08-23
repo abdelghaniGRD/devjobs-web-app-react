@@ -40,7 +40,7 @@ const AllCards = ({ filtredData }) => {
                     className="logo"
                     style={{ backgroundColor: card.logoBackground }}
                   >
-                    <img src={card.logo} alt="scott"></img>
+                    <img src={card.logo} alt={card.company}></img>
                   </div>
                   <p className="position">{card.position}</p>
 
