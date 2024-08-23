@@ -396,11 +396,10 @@ body.dark-mode .header .content .night {
 .popup .filtering-card .search-btn:hover {
   background-color: var(--primary-light-violet);
 }
-.App-header .popup .filtering-card .by-full-time .check {
-  width: 24px;
-  height: 24px;
-  background-color: var(--check-background);
-  border-radius: 3px;
+#root > div > header > div.main > div.popup > div > div.by-full-time > label {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
 .App-header .search p {
   color: var(--sec-gray);
@@ -429,6 +428,10 @@ body.dark-mode .header .content .night {
 }
 a {
   background-color: var(--primary-violet);
+}
+input {
+  border: none;
+  background-color: white;
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -502,7 +505,7 @@ a {
   }
   #root > div > header > div.main > div.search > div.col1,
   #root > div > header > div.main > div.search > div.col2 {
-    padding-left: 24px;
+    margin-left: 24px;
     column-gap: 16px;
   }
   #root > div > header > div.main > div.search > div.col1,
@@ -515,10 +518,22 @@ a {
     align-items: center;
   }
   #root > div > header > div.main > div.search > div.col1 {
-    width: 222px;
+    width: 198px;
+  }
+  #root > div > header > div.main > div.search > div.col1 input {
+    position: absolute;
+    top: 30px;
+    left: 61px;
+    width: 109px;
   }
   #root > div > header > div.main > div.search > div.col2 {
-    width: 213px;
+    width: 198px;
+  }
+  #root > div > header > div.main > div.search > div.col2 input {
+    position: absolute;
+    top: 30px;
+    left: 280px;
+    width: 129px;
   }
   #root > div > header > div.main > div.search > div.col3 {
     width: 252px;
@@ -527,18 +542,20 @@ a {
     padding-left: 16px;
     padding-right: 16px;
   }
-  #root > div > header > div.main > div.search > div.col3,
+  #root > div > header > div.main > div.search > div.col1,
   #root > div > header > div.main > div.search > div.col2 {
-    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
   }
-
-  #root > div > header > div.main > div.search > div.col3 span {
+  #root > div > header > div.main > div.search .searchQuery {
+    display: none;
+  }
+  /* #root > div > header > div.main > div.searchF > div.col3 span {
     width: 24px;
     height: 24px;
     background-color: var(--check-background);
     border-radius: 5px;
     margin-right: 16px;
-  }
+  } */
   #root > div > header > div.main > div.search > div.col3 button {
     width: 80px;
     height: 48px;
@@ -557,6 +574,9 @@ a {
   #root > div > header > div.main > div.search > div.col3 > p {
     font-weight: bold;
     color: var(--p-color);
+  }
+  #root > div > header > div.main > div.search > div.col3 > label {
+    margin-left: 16px;
   }
 
   #root > div > header > div.main > div.search > div.col1 > svg > path {
@@ -731,6 +751,7 @@ a {
     padding-left: 32px;
     column-gap: 16px;
   }
+
   #root > div > header > div.main > div.search > div.col1,
   #root > div > header > div.main > div.search > div.col2,
   #root > div > header > div.main > div.search > div.col3 {
