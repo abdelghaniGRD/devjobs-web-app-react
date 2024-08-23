@@ -577,6 +577,8 @@ input {
   }
   #root > div > header > div.main > div.search > div.col3 > label {
     margin-left: 16px;
+    color: var(--p-color);
+    font-weight: bold;
   }
 
   #root > div > header > div.main > div.search > div.col1 > svg > path {
@@ -746,7 +748,10 @@ input {
   #root > div > header > div.main > div.search > p {
     display: none;
   }
-  #root > div > header > div.main > div.search > div.col1,
+  #root > div > header > div.main > div.search > div.col1 {
+    padding-left: 32px;
+    column-gap: 16px;
+  }
   #root > div > header > div.main > div.search > div.col2 {
     padding-left: 32px;
     column-gap: 16px;
@@ -764,6 +769,9 @@ input {
   #root > div > header > div.main > div.search > div.col1 {
     width: 463px;
   }
+  #root > div > header > div.main > div.search > div.col1 input {
+    width: 312px;
+  }
   #root > div > header > div.main > div.search > div.col2 {
     width: 300px;
   }
@@ -779,13 +787,19 @@ input {
   #root > div > header > div.main > div.search > div.col2 {
     border-left: 1px solid #ebebeb;
   }
-
+  #root > div > header > div.main > div.search .searchQuery {
+    display: none;
+  }
   #root > div > header > div.main > div.search > div.col3 span {
     width: 24px;
     height: 24px;
     background-color: var(--check-background);
     border-radius: 5px;
     margin-right: 16px;
+  }
+  #root > div > header > div.main > div.search > div.col3 label {
+    color: var(--p-color);
+    font-weight: bold;
   }
   #root > div > header > div.main > div.search > div.col3 button {
     padding: 16px 35px;

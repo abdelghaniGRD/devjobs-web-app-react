@@ -24,9 +24,9 @@ const Main = () => {
 
   useEffect(() => {
     const filter = data.filter((card) => {
-      const MatchesSearch = card.position
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
+      const MatchesSearch =
+        card.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        card.company.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesFullTime = filterByFullTime
         ? card.contract.toLowerCase() === "full time"

@@ -16,7 +16,7 @@ const Search = ({
   // const [fullTime, setFullTime] = useState(false);
 
   useEffect(() => {
-    setWindowWidth(window.innerWidth < 600);
+    setWindowWidth(window.innerWidth <= 400);
   });
   const handleOnFilterClick = () => {
     setIsPopopOpen(true);
@@ -39,7 +39,7 @@ const Search = ({
     <>
       <div
         className="search"
-        // onClick={windowWidth ? handleOnFilterClick : null}
+        onClick={windowWidth ? handleOnFilterClick : null}
       >
         <div className="col1">
           <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +51,11 @@ const Search = ({
 
           <input
             type="text"
-            placeholder=" filter by title"
+            placeholder={
+              window.innerWidth <= 1024
+                ? " filter by title..."
+                : "Filter by title, companies, expertise…"
+            }
             className=""
             value={SearchQuery}
             onChange={HandleInputeChange}

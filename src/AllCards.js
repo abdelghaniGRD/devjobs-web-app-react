@@ -6,23 +6,10 @@ const AllCards = ({ filtredData }) => {
   const [cardId, setCardID] = useState();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [icons, setIcons] = useState({});
 
   const handleCardClick = (id) => {
     setCardID(id);
   };
-
-  // useEffect(() => {
-  //   async function fetchdata() {
-  //     try {
-  //       const resp = await fetch("/devjobs-web-app/Data/data.json");
-  //       const results = await resp.json();
-  //       setData(results.cards);
-  //       console.log(results.cards);
-  //     } catch {}
-  //   }
-  //   fetchdata();
-  // }, []);
 
   useEffect(() => {
     if (cardId) {
