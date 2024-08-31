@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import filter from "./assets/mobile/icon-filter.svg";
-import location from "./assets/desktop/icon-location.svg";
+import imglocation from "./assets/desktop/icon-location.svg";
 
 const Search = ({
-  FilterByLocation,
+  // FilterByLocation,
   setFilterByLocation,
-  SearchQuery,
+  // SearchQuery,
   setSearchQuery,
-  filterByFullTime,
+  // filterByFullTime,
   setFilterByFullTime,
+  setSlice,
+  Slice,
 }) => {
   const [isPopupOpen, setIsPopopOpen] = useState(false);
   const [windowWidth, setWindowWidth] = useState();
-  // const [fullTime, setFullTime] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [location, setlocation] = useState("");
+  const [fullTime, setFullTime] = useState(false);
 
   useEffect(() => {
     setWindowWidth(window.innerWidth <= 400);
@@ -23,23 +28,41 @@ const Search = ({
   };
 
   const handleOnSeerchClick = () => {
-    setIsPopopOpen(false);
+    setSearchQuery(title);
+    setFilterByLocation(location);
+    setFilterByFullTime(fullTime);
+
+    // close the popup in mobile
+    if (windowWidth <= 500) {
+      setIsPopopOpen(false);
+    }
+
+    setSlice(6);
   };
+
   const HandleInputeChange = (e) => {
-    setSearchQuery(e.currentTarget.value);
+    setTitle(e.currentTarget.value);
   };
+
   const HandleLocationChange = (e) => {
-    setFilterByLocation(e.currentTarget.value);
+    setlocation(e.currentTarget.value);
   };
+
   const handleFilterbyFullTime = () => {
-    setFilterByFullTime((prev) => !prev);
+    setFullTime((prev) => !prev);
   };
+
+  // const handleButtonSearch = () => {
+  //   setFilterByLocation(location);
+  //   setFilterByFullTime(fullTime);
+  //   setSearchQuery(title);
+  // };
 
   return (
     <>
       <div
         className="search"
-        onClick={windowWidth ? handleOnFilterClick : null}
+        // onClick={windowWidth ? handleOnFilterClick : null}
       >
         <div className="col1">
           <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -57,18 +80,20 @@ const Search = ({
                 : "Filter by title, companies, expertise…"
             }
             className=""
-            value={SearchQuery}
+            // value={title}
             onChange={HandleInputeChange}
           ></input>
         </div>
 
+        {/* mobile input             */}
         <input
           type="text"
           placeholder=" filter by title"
           className="searchQuery"
-          value={SearchQuery}
+          // value={SearchQuery}
           onChange={HandleInputeChange}
         ></input>
+
         <div className="col2">
           <svg width="17" height="24" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -78,7 +103,7 @@ const Search = ({
           </svg>
           <input
             type="text"
-            value={FilterByLocation}
+            // value={FilterByLocation}
             onChange={HandleLocationChange}
             placeholder="filter by location"
           ></input>
@@ -87,11 +112,11 @@ const Search = ({
           <input
             type="checkbox"
             onChange={handleFilterbyFullTime}
-            checked={filterByFullTime}
+            // checked={filterByFullTime}
           ></input>
           <label>Full Time</label>
           <p></p>
-          <button>Search</button>
+          <button onClick={handleOnSeerchClick}>Search</button>
         </div>
 
         <div className="icons">
@@ -100,7 +125,7 @@ const Search = ({
             alt="filter"
             onClick={windowWidth ? handleOnFilterClick : null}
           ></img>
-          <div className="search-icon">
+          <div className="search-icon" onClick={handleOnSeerchClick}>
             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M17.112 15.059h-1.088l-.377-.377a8.814 8.814 0 002.15-5.784A8.898 8.898 0 008.898 0 8.898 8.898 0 000 8.898a8.898 8.898 0 008.898 8.899c2.211 0 4.23-.808 5.784-2.143l.377.377v1.081l6.845 6.832 2.04-2.04-6.832-6.845zm-8.214 0A6.16 6.16 0 118.9 2.737a6.16 6.16 0 010 12.322z"
@@ -110,16 +135,18 @@ const Search = ({
           </div>
         </div>
       </div>
+
+      {/* mobile filter      */}
       {isPopupOpen && (
         <>
           <div className={`${isPopupOpen ? "overlayer" : ""}`}></div>
           <div className="popup">
             <div className="filtering-card">
               <div className="by-location">
-                <img src={location} alt="loaction"></img>
+                <img src={imglocation} alt="loaction"></img>
                 <input
                   type="text"
-                  value={FilterByLocation}
+                  value={location}
                   onChange={HandleLocationChange}
                   placeholder="filter by location"
                 ></input>
@@ -129,7 +156,7 @@ const Search = ({
                   <input
                     type="checkbox"
                     onChange={handleFilterbyFullTime}
-                    checked={filterByFullTime}
+                    checked={fullTime}
                   ></input>
                   Full Time
                 </label>

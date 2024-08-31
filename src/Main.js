@@ -5,9 +5,11 @@ import { useState } from "react";
 
 const Main = () => {
   const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterByFullTime, setFilterByFullTime] = useState(false);
   const [filterByLocation, setFilterByLocation] = useState("");
+  const [slice, setSlice] = useState(6);
 
   const [filtredData, setFiltredData] = useState([]);
 
@@ -16,14 +18,15 @@ const Main = () => {
       try {
         const resp = await fetch("/devjobs-web-app/Data/data.json");
         const results = await resp.json();
-        setData(results.cards);
+        setOriginalData(results.cards);
+        setData(results.cards.slice(0, slice));
       } catch {}
     }
     fetchdata();
-  }, [filterByFullTime, searchQuery, data, filterByLocation]);
+  }, [filterByFullTime, searchQuery, data, filterByLocation, slice]);
 
   useEffect(() => {
-    const filter = data.filter((card) => {
+    const filter = originalData.filter((card) => {
       const MatchesSearch =
         card.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
         card.company.toLowerCase().includes(searchQuery.toLowerCase());
@@ -37,8 +40,8 @@ const Main = () => {
         .includes(filterByLocation);
       return MatchesSearch && matchesFullTime && matchesLocation;
     });
-    setFiltredData(filter);
-  }, [filterByFullTime, searchQuery, data, filterByLocation]);
+    setFiltredData(filter.slice(0, slice));
+  }, [filterByFullTime, searchQuery, originalData, filterByLocation, slice]);
 
   return (
     <div className="main">
@@ -49,8 +52,9 @@ const Main = () => {
         setSearchQuery={setSearchQuery}
         filterByFullTime={filterByFullTime}
         setFilterByFullTime={setFilterByFullTime}
+        setSlice={setSlice}
       />
-      <AllCards filtredData={filtredData} />
+      <AllCards filtredData={filtredData} setSlice={setSlice} slice={slice} />
     </div>
   );
 };

@@ -39,6 +39,13 @@ body.dark-mode {
 input[type="checkbox"] {
   width: 25px;
   height: 25px;
+
+  border: 1px solid gray;
+  background-color: var(--check-background);
+}
+input[type="checkbox"]:checked {
+  background-color: #0683eea3;
+  border: 2px solid #0683eea3;
 }
 input[type="checkbox"]:hover {
   cursor: pointer;
@@ -55,7 +62,7 @@ body.dark-mode .header .content .night {
 }
 .App .App-header .header {
   width: 100%;
-  height: 161px;
+  height: 136px;
   background-image: url("assets/mobile/bg-pattern-header.svg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -76,7 +83,7 @@ body.dark-mode .header .content .night {
   height: 80px;
   background-color: var(--primary-Midnight);
   position: absolute;
-  top: 119px;
+  top: 95px;
   padding-left: 24px;
   padding-right: 16px;
   border-radius: 5px;
@@ -88,7 +95,7 @@ body.dark-mode .header .content .night {
   font-size: 30px;
   color: white;
   font-weight: bold;
-  padding-top: 32px;
+  margin-top: 30px;
 }
 .App-header .main {
   width: 327px;
@@ -431,7 +438,7 @@ a {
 }
 input {
   border: none;
-  background-color: white;
+  background-color: var(--primary-Midnight);
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -439,7 +446,6 @@ input {
     font-size: 16px;
   }
   .App-header {
-    width: 768px;
     margin: 0 auto;
   }
   .App-header .apply {
@@ -448,6 +454,13 @@ input {
   }
   .App-header .main {
     width: 768px;
+  }
+  .header .content {
+    width: 689px;
+  }
+  .header a,
+  .header .light-mode {
+    margin-top: -42px;
   }
   .main .cards {
     display: flex;
@@ -476,6 +489,7 @@ input {
     width: 689px;
     display: flex;
     justify-content: normal;
+    top: 116px;
   }
   .App-header .popup {
     transform: none;
@@ -484,10 +498,6 @@ input {
     position: unset;
     top: unset;
     left: unset;
-    -webkit-transform: none;
-    -moz-transform: none;
-    -ms-transform: none;
-    -o-transform: none;
   }
   .App .search .icons {
     display: none;
@@ -498,7 +508,9 @@ input {
   }
   .App .App-header .header {
     background-image: url("./assets/tablet/bg-pattern-header.svg");
-    /* padding: 0px 165px 0px 165px; */
+    height: 160px;
+    display: flex;
+    justify-content: center;
   }
   #root > div > header > div.main > div.search > p {
     display: none;
@@ -549,13 +561,7 @@ input {
   #root > div > header > div.main > div.search .searchQuery {
     display: none;
   }
-  /* #root > div > header > div.main > div.searchF > div.col3 span {
-    width: 24px;
-    height: 24px;
-    background-color: var(--check-background);
-    border-radius: 5px;
-    margin-right: 16px;
-  } */
+
   #root > div > header > div.main > div.search > div.col3 button {
     width: 80px;
     height: 48px;
@@ -677,9 +683,23 @@ input {
   .App-header {
     margin: 0 auto;
   }
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header a {
+    margin-top: -42px;
+  }
+  .light-mode {
+    margin-top: -30px;
+  }
   .App-header .apply {
     display: block;
     position: relative;
+  }
+  .header .content {
+    width: 1100px;
   }
   .App-header .main {
     width: 1110px;
@@ -688,7 +708,7 @@ input {
   .main .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    column-gap: 30px;
   }
   .App-header .job-description {
     width: 730px;
@@ -743,7 +763,7 @@ input {
   }
   .App .App-header .header {
     background-image: url("./assets/desktop//bg-pattern-header.svg");
-    padding: 0px 154px 0px 154px;
+    height: 162px;
   }
   #root > div > header > div.main > div.search > p {
     display: none;

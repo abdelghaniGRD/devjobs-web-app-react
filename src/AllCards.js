@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AllCards = ({ filtredData }) => {
+const AllCards = ({ filtredData, setSlice, slice }) => {
   const navigate = useNavigate();
   const [cardId, setCardID] = useState();
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
+
+  // const [loading, setLoading] = useState(true);
 
   const handleCardClick = (id) => {
     setCardID(id);
+  };
+  const handelLoadMoreClick = () => {
+    setSlice((pre) => pre + 6);
   };
 
   useEffect(() => {
@@ -16,8 +21,6 @@ const AllCards = ({ filtredData }) => {
       navigate(`/devjobs-web-app/cards/${cardId}`);
     }
   }, [cardId, navigate]);
-
-  if (!loading) return <div>...loading</div>;
 
   return (
     <>
@@ -53,11 +56,20 @@ const AllCards = ({ filtredData }) => {
           })}
         </div>
       ) : (
-        <p>loading ...</p>
+        ""
       )}
-      <div className="load-more">
-        <p>Load More</p>
-      </div>
+
+      {filtredData.length === 0 ? (
+        <div className="load-more">
+          <p>No results</p>
+        </div>
+      ) : filtredData.length >= slice ? (
+        <div className="load-more">
+          <p onClick={handelLoadMoreClick}>Load More</p>
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };
